@@ -1,0 +1,21 @@
+.paginationWrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 45%;
+    right: 0;
+    margin-right: 25px;
+    z-index: 3;
+}
+
+.paginationWrapper span {
+    cursor: pointer;
+}
+
+.paginationWrapper span i{
+    transition: 0.5s;
+}
+
+.paginationWrapper span:not(:first-child) {
+    margin-top: 5px;
+}

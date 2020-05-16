@@ -1,0 +1,56 @@
+.wrapper {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap : wrap;
+    position: absolute;
+    left: 0;
+    bottom: 3%;
+    width: 100%;
+    z-index: 3;
+}
+
+.switcher {
+    transition: all 10s;
+    opacity: 0.9;
+    outline: none;
+    height: 15px;
+    width: 63%;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+}
+
+.pseudoElements {
+    width: 63%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding-top: 3%;
+}
+
+.switcher:hover{
+    opacity: 1
+}
+.switcher::-webkit-slider-thumb{
+    /*visibility: hidden;*/
+    background: url("../../pictures/ice_toggle.png");
+    -webkit-appearance: none;
+    appearance: none;
+    width: 87px;
+    height: 111px;
+    cursor: pointer;
+    transition: all 1s;
+    /*position: absolute;*/
+    z-index: 2;
+
+}
+
+.switcher::-moz-range-thumb {
+    width:87px;
+    height:111px;
+    cursor:pointer;
+    transition: all 1s;
+}
+
+

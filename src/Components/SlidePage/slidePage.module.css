@@ -1,0 +1,40 @@
+.wrapper {
+    background-position : center;
+    background-size : cover;
+    /*height : 100vh;*/
+    min-width: 100%;
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    transition: 800ms;
+    z-index: 3;
+}
+
+.title {
+    font-weight: 400;
+    padding-top: 11%;
+    padding-left: 80px;
+    font-size: 30px;
+    transition: 800ms;
+}
+
+.BigChunk, .SmallChunk, .MediumChunk {
+    opacity: 0.44;
+    position: absolute;
+    transition: 800ms;
+}
+
+.BigChunk {
+    bottom: -3%;
+    left: 20%;
+    transform: rotate(-30deg);
+}
+
+.SmallChunk {
+    top: 14%;
+    left: -6px;
+}
+
+.MediumChunk {
+    top: calc(26% + 22px);
+    right: -2%;
+}

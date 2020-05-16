@@ -1,0 +1,52 @@
+.goDown {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    font-size: 18px;
+    padding-top: 15px;
+    z-index: 1;
+}
+
+.goDownWrapper  {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.goDownWrapper span {
+    z-index: 1;
+}
+
+.goDownArrow {
+    font-size: 35px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.rectangle {
+    width: 350px;
+    position: absolute;
+    background: orange;
+    z-index: 0;
+    bottom: -3px;
+    left: -80%;
+    border: 1px solid;
+    border-radius: 1px;
+    -webkit-box-shadow: 3px -100px 94px 100px rgba(246, 138, 36, 1);
+    -moz-box-shadow: 3px -100px 94px 100px rgba(246, 138, 36, 1);
+    box-shadow: 0px 1px 54px 44px rgba(246, 138, 36, 1);
+
+}
+
+.rectangle:hover {
+    /*box-shadow: 0px 1px 44px 54px rgba(246, 138, 36, 1);*/
+}
+
+/*.goDownArrow:after {*/
+/*    content: "";*/
+
+/*    text-align: center;*/
+/*}*/
