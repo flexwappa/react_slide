@@ -1,20 +1,20 @@
 import React from "react";
 import style from "./screenOneStyles.module.css"
+import Title from "../Components/Title/title";
+import PulseDot from "../Components/PulseDot/pulseDot";
 
-const ScreenOne = ({positionY}) => {
-    console.log(positionY)
-    const transformStyle = {
-        screen: {transform: `translateY(${positionY}%)`},
-        text: {transform: `translateY(${Math.abs(positionY)}px)`},
-        pulseDot: {transform: `translateY(${Math.abs(positionY)}px)`, transition: "1s"},
+const ScreenOne = React.memo(props => {
+    const {swipePositionY, screenOne :{id, title}} = props
+    const swipe = {
+        transform: `translateY(${swipePositionY}%)`
     }
-    const pulseDotArray = [1, 2, 3, 4]
+    const pulseDotArray = [4, 5, 6, 7]
     return (
-        <div style={transformStyle.screen} className={style.wrapper}>
-            <h1 style={transformStyle.text} className={style.title}>Всегда ли цели терапии СД2<br/>на поверхности?</h1>
-            {pulseDotArray.map(el => <span style={transformStyle.pulseDot} className={style.pulseDot}/>)}
+        <div style={swipe} className={style.wrapper}>
+            <Title clazz={id} swipePositionY={swipePositionY} title={<>{title[0]}<br/>{title[1]}</>}/>
+            {pulseDotArray.map(el => <PulseDot key={el} swipePositionY={swipePositionY}/>)}
         </div>
     )
-}
+})
 
 export default ScreenOne;

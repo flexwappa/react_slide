@@ -1,12 +1,8 @@
 .wrapper {
     background-position : center;
     background-size : cover;
-    /*height : 100vh;*/
     min-width: 100%;
-    /*position: relative;*/
-    /*overflow: hidden;*/
     transition: 800ms;
-    z-index: 3;
 }
 
 .title {
@@ -16,25 +12,16 @@
     font-size: 30px;
     transition: 800ms;
 }
-
-.BigChunk, .SmallChunk, .MediumChunk {
-    opacity: 0.44;
-    position: absolute;
-    transition: 800ms;
+/*----------------STYLES--FOR--SLIDEPAGES------------*/
+.SlideOne {
+    background-image: url("../../pictures/SliderScreenOne.png");
+    order: 1;
 }
-
-.BigChunk {
-    bottom: -3%;
-    left: 20%;
-    transform: rotate(-30deg);
+.SlideTwo {
+    background-image: url("../../pictures/SliderScreenTwo.png");
+    order: 0;
 }
-
-.SmallChunk {
-    top: 14%;
-    left: -6px;
-}
-
-.MediumChunk {
-    top: calc(26% + 22px);
-    right: -2%;
+.SlideThree {
+    background-image: url("../../pictures/SliderScreenThree.png");
+    order: -1;
 }

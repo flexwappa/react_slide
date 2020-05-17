@@ -1,0 +1,6 @@
+.wrapper {
+    background: #0A123B;
+    width: 100%;
+    transition: 700ms;
+    overflow: hidden;
+}

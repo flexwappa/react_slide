@@ -3,47 +3,37 @@ import "./AppStyles.css"
 import ScreenOne from "./ScreenOne/screenOne";
 import "./fonts/fonts.css"
 import ScreenTwo from "./ScreenTwo/ScreenTwo";
-import Slider from "./Slider/slider";
-import SlideOneImg from "./pictures/SliderScreenOne.png"
-import SlideTwoImg from "./pictures/SliderScreenTwo.png"
-import SlideThreeImg from "./pictures/SliderScreenThree.png"
 import Pagination from "./Components/Pagination/pagination";
 import GoDown from "./Components/GoDown/goDown";
-import iceBig from "./pictures/iceBig.png"
-import iceBlurred from "./pictures/iceBlurred.png"
-import iceMedium from "./pictures/iceMedium.png"
-import iceSmall from "./pictures/iceSmall.png"
+import ScreenThree from "./ScreenThree/screenThree";
 
 class App extends React.Component {
     state = {
-        pagination: {
-            activeDot: 0
-        },
-        iceChunks: [iceBig, iceBlurred, iceMedium, iceSmall],
+        paginationActiveDot : 0,
         slidePages: [
-            {background: SlideThreeImg, title: "Звенья патогенеза СД2"},
-            {background: SlideTwoImg, title: "Смертельный октет"},
-            {background: SlideOneImg, title: "Звенья патогенеза СД2"}
+            {id: "SlideOne", title: "Звенья патогенеза СД2"},
+            {id: "SlideTwo", title: "Смертельный октет"},
+            {id: "SlideThree", title: "Звенья патогенеза СД2"}
         ],
-        switcher: {
-            value: 100
-        },
-        swipe: {
-            positionY: 0
-        },
-        parallaxMoveStep: 0
+        screenPages: [
+            {id: "ScreenOne", title : ["Всегда ли цели терапии СД2", "на поверхности?"]},
+            {id: "ScreenTwo", title: ["Основа терапии -", "патогенез СД2"]},
+        ],
+        slidePositionX: -200,
+        swipePositionY: 0,
     }
+    // ------------PAGINATION--HANDLER----------- //
     setActiveDot = (plusOrMinus) => {
-        const activeDot = this.state.pagination.activeDot
+        const activeDot = this.state.paginationActiveDot
         switch (plusOrMinus) {
             case "-" :
                 this.setState(({pagination}) => {
-                    return {pagination: {activeDot: activeDot + 1}}
+                    return {paginationActiveDot : activeDot + 1}
                 })
                 break
             case "+" :
                 this.setState(({pagination}) => {
-                    return {pagination: {activeDot: activeDot - 1}}
+                    return {paginationActiveDot: activeDot - 1}
                 })
                 break
             default :
@@ -51,68 +41,49 @@ class App extends React.Component {
         }
 
     }
-    checkAmountSwitcherValue = (switcherValue) => {
-        if (switcherValue <= 100 && switcherValue >= 80) return -200
-        if (switcherValue <= 79 && switcherValue >= 25) return -100
-        if (switcherValue <= 24 && switcherValue >= 0) return 0
+    // ------------SLIDER--HANDLER----------- //
+    changeSlide = (slidePositionX) => {
+        this.setState({slidePositionX})
     }
-    getPositionX = () => {
-        const switcherValue = this.state.switcher.value
-        if (switcherValue <= 100 && switcherValue >= 80) return -200
-        if (switcherValue <= 79 && switcherValue >= 25) return -100
-        if (switcherValue <= 24 && switcherValue >= 0) return 0
-    }
-    changeSlide = (e) => {
-        const value = e.target.value
-        this.setState({switcher: {value}})
-    }
-    onMouseUp = (e) => {
-        const value = this.checkAmountSwitcherValue(e.target.value)
-        this.setState({switcher: {value: (value / 2) * -1}})
-    }
+    // ------------ARROW-DOWN--HANDLER----------- //
     goDown = (e) => {
         this.setSwipePositionY("-")
     }
-    setSwipePositionY = (plusOrMinus) => {
-        const positionY = this.state.swipe.positionY
-        setTimeout(() => {
-            this.setActiveDot(plusOrMinus)
-            this.setState(({swipe}) => {
-                if (plusOrMinus === '+') return {swipe: {positionY: positionY + 100}}
-                if (plusOrMinus === '-') return {swipe: {positionY: positionY - 100}}
-            })
-        }, 100)
-    }
+    // ------------SWIPE--HANDLERS------------- //
+    startPoint;
     touchStart = (e) => {
         e.stopPropagation();
-        // this.parallax("start")
         this.startPoint = e.changedTouches[0].clientY;
     }
-    startPoint;
     touchEnd = (e) => {
-        // this.parallax("end")
-        const positionY = this.state.swipe.positionY
+        const positionY = this.state.swipePositionY
         const finalPoint = e.changedTouches[0].clientY
         if (this.startPoint - finalPoint > 200 && positionY !== -200) this.setSwipePositionY("-", 100)
         if (finalPoint - this.startPoint > 200 && positionY !== 0) this.setSwipePositionY("+")
     }
+    setSwipePositionY = (plusOrMinus) => {
+        const positionY = this.state.swipePositionY
+        setTimeout(() => {
+            this.setActiveDot(plusOrMinus)
+            this.setState(({swipe}) => {
+                if (plusOrMinus === '+') return {swipePositionY: positionY + 100}
+                if (plusOrMinus === '-') return {swipePositionY: positionY - 100}
+            })
+        }, 100)
+    }
 
     render() {
-        const {pagination: {activeDot}, iceChunks, slidePages, switcher: {value}, swipe: {positionY}} = this.state
+        const {paginationActiveDot, screenPages, slidePages, swipePositionY, slidePositionX} = this.state
         return (
             <div className="appWrapper" onTouchStart={this.touchStart} onTouchEnd={this.touchEnd}>
-                <Pagination activeDot={activeDot}/>
-                {activeDot == 0 ? <GoDown goDown={this.goDown}/> : null}
-                <ScreenOne positionY={positionY}/>
-                <ScreenTwo positionY={positionY} iceChunks={iceChunks}/>
-                <Slider iceChunks={iceChunks}
-                        positionY={positionY}
-                        changeSlide={this.changeSlide}
-                        onMouseUp={this.onMouseUp}
-                        positionX={this.getPositionX()}
-                        switcherValue={value}
-                        slidePages={slidePages}
-                />
+                <Pagination paginationActiveDot={paginationActiveDot}/>
+                {paginationActiveDot === 0 ? <GoDown goDown={this.goDown}/> : null}
+                <ScreenOne screenOne={screenPages[0]} swipePositionY={swipePositionY}/>
+                <ScreenTwo screenTwo={screenPages[1]} swipePositionY={swipePositionY}/>
+                <ScreenThree swipePositionY={swipePositionY}
+                             slidePositionX={slidePositionX}
+                             changeSlide={this.changeSlide}
+                             slidePages={slidePages}/>
             </div>
         )
     }

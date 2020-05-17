@@ -1,20 +1,23 @@
 import React from "react";
 import style from "./ScreenTwoStyles.module.css"
 import IceChunk from "../Components/IceChunk/iceChunk";
+import Title from "../Components/Title/title";
 
-const ScreenTwo = ({iceChunks, positionY}) => {
+const ScreenTwo = React.memo(props => {
+    const {swipePositionY, screenTwo : {id, title}} = props
     const transformStyle = {
-        screen : {transform : `translateY(${positionY}%)`},
-        text : {transform : `translateY(${ Math.abs(positionY) - 20 }%)`},
-        chunks : {transform : `translateY(${ Math.abs(positionY) - 50 }%)`}
+        screen : {transform : `translateY(${swipePositionY}%)`},
     }
-    const iceChunksStylesArray = ["BigChunk", "BlurredChunk", "MediumChunk", "SmallChunk"]
+    const iceChunksArray = ["BigChunk", "BlurredChunk", "MediumChunk", "SmallChunk"]
     return (
         <div style={transformStyle.screen} className={style.wrapper}>
-            <h2 style={transformStyle.text} className={style.title}>Основа терапии —<br/>патогенез СД2</h2>
-            {iceChunksStylesArray.map((el, index) => <div style={transformStyle.chunks} className={style[el]}><IceChunk picture={iceChunks[index]}/></div>)}
+            <Title clazz={"ScreenTwo"} swipePositionY={swipePositionY} title={<>{title[0]}<br/>{title[1]}</>} />
+            {iceChunksArray.map(el => <IceChunk swipePositionY={swipePositionY}
+                                                key={el}
+                                                typeOfChunk={el}
+                                                clazz={id}/>)}
         </div>
     )
-}
+})
 
 export default ScreenTwo;

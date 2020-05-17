@@ -1,13 +1,13 @@
 import React from "react";
-import "./goDownStyles.css"
+import style from "./goDownStyles.module.css"
 
 const GoDown = ({goDown}) => {
     return (
-        <div className="goDown">
-            <div onClick={goDown} className="goDownWrapper">
+        <div className={style.goDown}>
+            <div onClick={goDown} className={style.wrapper}>
                 <span>Листайте вниз</span>
-                <span className="goDownArrow"><i className="fa fa-chevron-down"></i></span>
-                <div className="rectangle"></div>
+                <span className={style.arrow}><i className="fa fa-chevron-down"></i></span>
+                <div className={style.rectangle}/>
             </div>
         </div>
     )

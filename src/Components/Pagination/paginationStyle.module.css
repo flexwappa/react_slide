@@ -1,4 +1,4 @@
-.paginationWrapper {
+.wrapper {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -8,14 +8,14 @@
     z-index: 3;
 }
 
-.paginationWrapper span {
+.wrapper span {
     cursor: pointer;
 }
 
-.paginationWrapper span i{
+.wrapper span i{
     transition: 0.5s;
 }
 
-.paginationWrapper span:not(:first-child) {
+.wrapper span:not(:first-child) {
     margin-top: 5px;
 }

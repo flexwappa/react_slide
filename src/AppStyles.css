@@ -9,10 +9,6 @@
 .appWrapper {
     background: #0A123B;
     width: 100%;
-    height: 110vh;
-    /*position: relative;*/
-    /*transition: 0.3s;*/
-    /*overflow: hidden;*/
 }
 
 @media only screen
@@ -20,7 +16,8 @@ and (min-device-width: 768px)
 and (max-device-width: 1024px)
 and (orientation: landscape) {
     .appWrapper {
-        position:fixed
-        /*overflow: hidden;*/
+        overflow: hidden;
+        position: fixed;
     }
 }
+

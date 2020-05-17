@@ -1,34 +1,13 @@
 import React from "react";
-// import "./iceChunkStyle.css"
-// import iceBig from "../../pictures/iceBig.png"
-// import iceBlurred from "../../pictures/iceBlurred.png"
-// import iceMedium from "../../pictures/iceMedium.png"
-// import iceSmall from "../../pictures/iceSmall.png"
+import style from "./iceChunkStyles.module.css"
 
-const IceChunk = ({picture}) => {
-    // const getBackGroundImage = () => {
-    //     let result;
-    //     switch (iceChunk) {
-    //         case "BigChunk" :
-    //             result = iceBig
-    //             break;
-    //         case "BlurredChunk" :
-    //             result = iceBlurred
-    //             break;
-    //         case "MediumChunk" :
-    //             result = iceMedium
-    //             break;
-    //         case "SmallChunk" :
-    //             result = iceSmall
-    //             break;
-    //     }
-    //     return result
-    // }
+const IceChunk = React.memo( props => {
+    const {typeOfChunk, clazz, swipePositionY} = props
+    const parallax = {
+        transform : `translateY(${ Math.abs(swipePositionY) - 50 }%)`
+    }
     return (
-        <div className="IceChunkWrapper">
-            <img src={picture}
-                 alt="Кусок льда"/>
-        </div>
+        <div style={parallax} className={`${style[clazz]} ${style[typeOfChunk]}`}></div>
     )
-}
+})
 export default IceChunk;

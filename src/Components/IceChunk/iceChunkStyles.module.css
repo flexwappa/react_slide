@@ -1,0 +1,91 @@
+.BigChunk, .SmallChunk, .MediumChunk, .BlurredChunk {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.44;
+    transition: 0.8s;
+}
+.BigChunk {
+    background: url("../../pictures/iceBig.png");
+    height: 204px;
+    width: 217px;
+}
+.SmallChunk {
+    background: url("../../pictures/iceSmall.png");
+    height: 38px;
+    width: 39px;
+}
+.MediumChunk {
+    background: url("../../pictures/iceMedium.png");
+    height: 101px;
+    width: 107px;
+}
+.BlurredChunk {
+    background: url("../../pictures/iceBlurred.png");
+    height: 75px;
+    width: 76px;
+}
+/*----------------STYLES--FOR--SCREEN------------*/
+.ScreenTwo {
+    opacity: 1;
+}
+
+.BigChunk.ScreenTwo {
+    top: 5%;
+    right: -7%;
+}
+.SmallChunk.ScreenTwo {
+    top: 17%;
+    left: calc(8% + 5px);
+    transform: rotate(25deg);
+}
+.MediumChunk.ScreenTwo {
+    bottom: 32%;
+    left: 22%;
+}
+
+.BlurredChunk {
+    bottom: 28%;
+    right: 23%;
+    transition: 1s;
+}
+/*----------------STYLES--FOR--SLIDE--PAGES----------*/
+
+.BigChunk.SlideOne {
+    bottom: -3%;
+    left: 13%;
+    transform: rotate(-20deg);
+}
+.SmallChunk.SlideOne {
+    top: 15%;
+    left: 1%;
+}
+.MediumChunk.SlideOne {
+    right: 0;
+    top: 28%;
+}
+
+.BigChunk.SlideTwo {
+    bottom: 0;
+    right: 1%;
+}
+.SmallChunk.SlideTwo {
+    top: 13%;
+    left: 46%;
+}
+.MediumChunk.SlideTwo {
+    top: 32%;
+    left: 4%;
+}
+
+.BigChunk.SlideThree {
+    bottom: 2%;
+    left: 2%;
+}
+.SmallChunk.SlideThree {
+    top: 16%;
+    right: 7%;
+}
+.MediumChunk.SlideThree {
+    right: 25%;
+    top: 30%;
+}
